@@ -89,6 +89,7 @@
     transition-timing-function: cubic-bezier(.28,.51,.78,.86);  
     transition-property: opacity, height, padding;
     height: auto;
+    word-wrap: break-word;
 }
 .msg.msg-user {
     background-color: #f1f1f1;
