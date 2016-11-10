@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata|Indie+Flower|Roboto:400,700|VT323');
+#floor {
+    margin: 0px;
+    background-color: #f1f1f1;
+    box-sizing: border-box;
+}
+#hidden-name {
+    position: absolute;
+    width: 100%;
+    color: darkgray;
+}
+#shown-name {
+    color: #f1f1f1;
+}
+#backdrop {
+    position: absolute;
+    background-color: #82b5df;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transform: scaleY(0);    
+    transition-delay: 500ms;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(.5, 0, 0, 1);
+}
+.fill {
+    background-color: #82b5df;
+}
+#backdrop.dropIn {
+    transform: scaleY(1);
+}
+.name-head {
+    font-family: 'Indie Flower', cursive;
+    /*font-family: 'Inconsolata', monospace;*/
+    /*font-family: 'Roboto', sans-serif;*/
+    /*font-family: 'VT323', monospace;*/
+    font-size: 10vw;
+}
+#input {
+    position: fixed;
+    border: none;
+    color: gray;
+    z-index: 10;
+    background-color: rgba(241, 241, 241, 0.75);
+    padding: 10px;
+    font-size: 16px;
+    width: 500px;
+    max-width: 80%;
+    border-radius: 4px;
+    opacity: 0;
+    transition-delay: 1000ms;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(.28,.51,.78,.86);
+    bottom: 0px;
+}
+#input.dropIn {
+    transform: translate(-50%, -40px);
+    opacity: 1;
+}
+#conversation {
+    position: absolute;
+    width: 500px;
+    max-width: 80%;
+    z-index: 5;
+    bottom: 0px;
+    color: white;  
+    max-height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+#conversation::-webkit-scrollbar { 
+    display: none; 
+}
+#conversation-bottom {
+    height: 85px;
+}
+#conversation-top {
+    height: 10px;
+}
+.msg {
+    display: block;
+    max-width: 60%;
+    padding: 10px;
+    color: #1f1f1f;
+    border-radius: 4px;
+    opacity: 0;
+    bottom: 85px;    
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(.28,.51,.78,.86);  
+    transition-property: opacity, height, padding;
+    height: auto;
+}
+.msg.msg-user {
+    background-color: #f1f1f1;
+    margin: 5px 0px 5px 10px;    
+    float: right;
+}
+.msg.msg-computer {
+    background-color: rgb(255, 159, 136);
+    margin: 5px 10px 5px 0px; 
+    float: left;   
+}
+.show {
+    opacity: 1;
+    padding: 10px;
+    transform: scaleY(1);    
+}
+
+
+
+
+
+html {
+    font-family: 'Roboto', sans-serif;
+    color: #1f1f1f;
+}
+.vertical-align {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.horizontal-align {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.center {
+    text-align: center;
+}
+.clearfix { 
+    display: inline-block; 
+    width: 100%;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
