@@ -19,10 +19,8 @@ var intro = function(){
 }
 
 var initChat = function(){
-    var conversation = document.getElementById("conversation");
-    var input = document.getElementById("input");
-
-    chatInstance = new Chat(conversation, input, classes, options);
+    var chat = document.getElementById("conversation-container");
+    chatInstance = new Chat(chat, null, null);
 
     // Some fun things for now
     setTimeout(function() {
