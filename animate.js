@@ -26,12 +26,9 @@ var initChat = function(){
 
     // Some fun things for now
     setTimeout(function() {
-        chatInstance.addMessage("computer","Hi!");
+        chatInstance.addMessage("general","Entering a world of journey and explorations ...");
         setTimeout(function() {
-            chatInstance.addMessage("computer","What is your name?");                    
-            setTimeout(function() {
-                chatInstance.addMessage( "computer","AHHHHH!");
-            } ,5000);
-        } ,500);
+            chatInstance.addMessage("computer","Hi, have I seen you before?");                    
+        } ,1000);
     } ,500);
 }
