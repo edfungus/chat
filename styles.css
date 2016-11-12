@@ -3,6 +3,10 @@
     margin: 0px;
     background-color: #f1f1f1;
     box-sizing: border-box;
+    overflow: hidden;
+    position: fixed;
+    height: 100%;
+    width: 100%;
 }
 #hidden-name {
     position: absolute;
@@ -115,10 +119,11 @@
 
 /*General CSS below*/
 
-*, input {
+html, input {
     font-family: 'Roboto Mono', monospace;
     font-size: 15px; 
     color: #1f1f1f;
+    box-sizing: border-box;
 }
 .vertical-align {
     position: relative;
