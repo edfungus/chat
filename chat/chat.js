@@ -15,6 +15,11 @@ class Chat {
         this.input.classList.add(this.classes.input);
         this.container.appendChild(this.input);
         var that = this;
+
+        document.onkeydown = function(e) {
+            that.input.focus(); // for now map everything to input                     
+        };
+
         this.input.addEventListener("keypress", function(e){
             var key = e.which || e.keyCode;
             var value = that.input.value.replace(/^(\s)|(\s+)$/g, ""); // removes whitespace before and after
@@ -23,8 +28,11 @@ class Chat {
                  that.input.value = "";
             }
         });
-        this.input.classList.add(this.classes.inputDropIn);  
-        this.input.focus();
+        
+        setTimeout(function() {
+            that.input.classList.add(that.classes.inputDropIn);  
+            that.input.focus();               
+        },1);
     }
 
     setupConversation() {
@@ -55,7 +63,7 @@ class Chat {
             message.classList.add(that.classes.messageShow);
             message.innerHTML = text;            
             that.conversation.scrollTop = that.conversation.scrollHeight;                 
-        },10);
+        },1);
     }
 
     defaultClasses() {
