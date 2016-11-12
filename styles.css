@@ -9,9 +9,6 @@
     width: 100%;
     color: darkgray;
 }
-#shown-name {
-    color: #f1f1f1;
-}
 #backdrop {
     position: absolute;
     background-color: #82b5df;
@@ -36,19 +33,20 @@
     /*font-family: 'VT323', monospace;*/
     font-size: 10vw;
 }
+
+/*Chat CSS below*/
+
 #input {
     position: fixed;
     border: none;
-    color: gray;
     z-index: 10;
     background-color: rgba(241, 241, 241, 0.75);
     padding: 10px;
     font-size: 16px;
     width: 500px;
-    max-width: 80%;
+    max-width: 90%;
     border-radius: 4px;
     opacity: 0;
-    transition-delay: 1000ms;
     transition-duration: 300ms;
     transition-timing-function: cubic-bezier(.28,.51,.78,.86);
     bottom: 0px;
@@ -60,7 +58,7 @@
 #conversation {
     position: absolute;
     width: 500px;
-    max-width: 80%;
+    max-width: 90%;
     z-index: 5;
     bottom: 0px;
     color: white;  
@@ -70,12 +68,6 @@
 }
 #conversation::-webkit-scrollbar { 
     display: none; 
-}
-#conversation-bottom {
-    height: 85px;
-}
-#conversation-top {
-    height: 10px;
 }
 .msg {
     display: block;
@@ -108,10 +100,9 @@
 }
 
 
+/*General CSS below*/
 
-
-
-html {
+*, input {
     font-family: 'Roboto', sans-serif;
     color: #1f1f1f;
 }
