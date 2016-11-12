@@ -4,8 +4,9 @@ var classes = {
     message: "msg",
     messageShow: "show",
     messageTypes: {
-        user: "msg-user",
-        computer: "msg-computer"
+        user: "user",
+        computer: "computer",
+        general: "general"
     }
 }
 var options = {
