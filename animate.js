@@ -20,7 +20,7 @@ var intro = function(){
 
 var initChat = function(){
     var chat = document.getElementById("conversation-container");
-    chatInstance = new Chat(chat, null, null);
+    chatInstance = new Chat(chat);
 
     // Some fun things for now
     setTimeout(function() {

@@ -1,10 +1,10 @@
 class Chat {
     constructor(container, classes, options) {
-        this.actions = new Actions();
         this.classes = classes != null ? classes : this.defaultClasses();
         this.options = options != null ? options : this.defaultOptions();
 
         this.container = this.addClasses(container, [this.classes.container]);
+        this.actions = new Actions(this, this.options.triggerChar);
 
         this.setupInput();
         this.setupConversation();
@@ -23,9 +23,7 @@ class Chat {
             var key = e.which || e.keyCode;
             var value = that.input.value.replace(/^(\s)|(\s+)$/g, ""); // removes whitespace before and after
             if (key === 13 && value != "") { 
-                that.addMessage("user", that.input.value);
-                that.input.value = "";
-
+                that.actions.parse(value);
             }
         });
         
@@ -64,11 +62,20 @@ class Chat {
         },1);
     }
 
-    processMessage(message) {
-        if(message[0] === ">") {
-            
+    clearMessages() {
+        var messages = this.conversation.getElementsByClassName(this.classes.message);
+        var clearfix = this.conversation.getElementsByClassName(this.classes.clearfix);
+        
+        while(messages.length > 0) {
+            this.conversation.removeChild(messages[0]);
         }
+        while(clearfix.length > 0) {
+            this.conversation.removeChild(clearfix[0]);
+        }
+    }
 
+    clearInput() {
+        this.input.value = "";
     }
 
     addClasses(element, classList) {
@@ -98,11 +105,42 @@ class Chat {
         return {
             conversationTopMargin: "10px",
             conversationBottomMargin: "85px",
-            defaultMessageType: "user"
+            defaultMessageType: "user",
+            triggerChar: "/"
         };
     } 
 }
 
 class Actions {
-    
+    constructor(chat, triggerChar) {
+        this.chat = chat;
+        this.triggerChar = triggerChar;
+        this.actionMessageType = "general";
+    }
+
+    parse(message) {
+        if(message[0] != this.triggerChar) {
+            this.chat.addMessage(this.chat.options.defaultMessageType, message);
+            this.chat.clearInput();                    
+            return;
+        }
+
+        var command = message.substring(1).split(" ")[0]
+        if(this[command] == null) {
+            this.chat.addMessage(this.actionMessageType, "Unknown command: " + command);
+            this.chat.clearInput();                    
+            return;
+        }
+
+        this[command]();
+        this.chat.clearInput();        
+    }
+
+    sex() {
+        this.chat.addMessage("computer", "I'm a computer dumbass");
+    }
+
+    clear() {
+        this.chat.clearMessages(); 
+    }
 }
