@@ -1,10 +1,14 @@
 var chatInstance;
+var wsConnection;
 
 window.onload = function(){
     intro();
-    setTimeout(function() {
-        initChat();
-    }, 1500);
+    initConnection();
+    wsConnection.onopen = function (event) {
+        setTimeout(function() {
+            initChat();
+        }, 1500);
+    };
 }
 
 var intro = function(){
@@ -20,13 +24,20 @@ var intro = function(){
 
 var initChat = function(){
     var chat = document.getElementById("conversation-container");
-    chatInstance = new Chat(chat);
+    chatInstance = new Chat(wsConnection, chat);
 
     // Some fun things for now
     setTimeout(function() {
-        chatInstance.addMessage("general","Entering a world of journey and explorations ...");
+        chatInstance.addMessage("general","Entering a world of journeys and explorations ...");
         setTimeout(function() {
-            chatInstance.addMessage("computer","Hi, have I seen you before?");                    
+            chatInstance.addMessage("computer","Hi, I don't think we have met");    
+                setTimeout(function() {
+                chatInstance.addMessage("computer","Type \"/hello\" for more information");                    
+            } ,1000);                
         } ,1000);
     } ,500);
+}
+
+var initConnection = function(){
+    wsConnection = new WebSocket("ws://192.168.1.8:8080/position");
 }

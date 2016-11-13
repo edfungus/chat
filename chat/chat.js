@@ -1,10 +1,16 @@
 class Chat {
-    constructor(container, classes, options) {
+    constructor(connection, container, classes, options) {
         this.classes = classes != null ? classes : this.defaultClasses();
         this.options = options != null ? options : this.defaultOptions();
 
         this.container = this.addClasses(container, [this.classes.container]);
         this.actions = new Actions(this, this.options.triggerChar);
+
+        this.connection = connection;
+        var that = this;
+        this.connection.onmessage = function (event) {
+            that.addMessage("computer", event.data);
+        }
 
         this.setupInput();
         this.setupConversation();
@@ -60,6 +66,11 @@ class Chat {
             message.innerHTML = text;            
             that.conversation.scrollTop = that.conversation.scrollHeight;                 
         },1);
+        this.sendToConnection(text);
+    }
+
+    sendToConnection(message) {
+        this.connection.send(message);
     }
 
     clearMessages() {
@@ -138,6 +149,10 @@ class Actions {
 
     sex() {
         this.chat.addMessage("computer", "I'm a computer dumbass");
+    }
+
+    hello() {
+        this.chat.addMessage(this.actionMessageType, "about <br>sldfkjdslkj<br> I WANT SOME STYLING AND ELEMENTS HERE!");
     }
 
     clear() {
