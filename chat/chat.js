@@ -140,6 +140,10 @@ class Actions {
         this.chat.addMessage("computer", "I'm a computer dumbass");
     }
 
+    hello() {
+        this.chat.addMessage(this.actionMessageType, "about <br>sldfkjdslkj<br> I WANT SOME STYLING AND ELEMENTS HERE!");
+    }
+
     clear() {
         this.chat.clearMessages(); 
     }
