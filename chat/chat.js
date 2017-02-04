@@ -136,12 +136,8 @@ class Actions {
         this.chat.clearInput();        
     }
 
-    sex() {
-        this.chat.addMessage("computer", "I'm a computer dumbass");
-    }
-
     hello() {
-        this.chat.addMessage(this.actionMessageType, "about <br>sldfkjdslkj<br> I WANT SOME STYLING AND ELEMENTS HERE!");
+        this.chat.addMessage(this.actionMessageType, "<u>hello!</u> <br>beep bop beep beep");
     }
 
     clear() {
